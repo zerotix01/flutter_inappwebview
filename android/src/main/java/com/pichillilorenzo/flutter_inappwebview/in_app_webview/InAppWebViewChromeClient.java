@@ -997,8 +997,10 @@ public class InAppWebViewChromeClient extends WebChromeClient implements PluginR
     PackageManager packageManager = activity.getPackageManager();
     try {
       String[] requestedPermissions = packageManager.getPackageInfo(activity.getApplicationContext().getPackageName(), PackageManager.GET_PERMISSIONS).requestedPermissions;
-      if (Arrays.asList(requestedPermissions).contains(Manifest.permission.CAMERA)
-              && ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+      if (Arrays.asList(requestedPermissions).contains(Manifest.permission.READ_MEDIA_IMAGES)
+          && (Arrays.asList(requestedPermissions).contains(Manifest.permission.CAMERA)
+              && ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+              && ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
         needed = true;
       }
     } catch (PackageManager.NameNotFoundException e) {
