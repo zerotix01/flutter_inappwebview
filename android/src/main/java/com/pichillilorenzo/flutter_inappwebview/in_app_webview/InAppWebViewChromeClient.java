@@ -1011,8 +1011,8 @@ public class InAppWebViewChromeClient extends WebChromeClient implements PluginR
   }
 
   private Intent getPhotoIntent() {
-    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-    imageOutputFileUri = getOutputUri(MediaStore.ACTION_IMAGE_CAPTURE);
+    Intent intent = new Intent(MediaStore.ACTION_CHOOSER);
+    imageOutputFileUri = getOutputUri(MediaStore.ACTION_CHOOSER);
     intent.putExtra(MediaStore.EXTRA_OUTPUT, imageOutputFileUri);
     return intent;
   }
